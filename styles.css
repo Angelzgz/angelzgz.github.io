@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Vehículos Eléctricos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #f5f5f5, #e0e0e0); /* Gris claro degradado a gris más oscuro */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50; /* Verde */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        nav {
+            background-color: #81c784; /* Verde más claro */
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #4CAF50; /* Verde */
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            color: #333; /* Gris oscuro */
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .input-group input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50; /* Verde */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Verde más oscuro al pasar el ratón */
+        }
+
+        #charging-time-result {
+            margin-top: 20px;
+            color: #333; /* Gris oscuro */
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Portal de Vehículos Eléctricos</h1>
+    </header>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="calculadora.html">Calculadora Eléctrica</a>
+        <a href="recarga.html">Puntos de Recarga</a>
+    </nav>
+    <div class="container">
+        <h2>Parámetros Avanzados para la Carga de Coche Eléctrico</h2>
+        <!-- Aquí va el resto de tu contenido -->
+    </div>
+</body>
+</html>
