@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticación de Usuarios - Portal de Vehículos Eléctricos</title>
+    <!-- Agregar los scripts de Firebase Authentication -->
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .message {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .message a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Autenticación</h1>
+        <form id="auth-form">
+            <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+            <input type="password" id="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        <div class="message">
+            <p>¿No tienes una cuenta? <a href="#" id="signup-link">Regístrate aquí</a>.</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "TU_API_KEY",
+            authDomain: "TU_DOMINIO.firebaseapp.com",
+            projectId: "TU_PROYECTO_ID",
+            storageBucket: "TU_PROYECTO_ID.appspot.com",
+            messagingSenderId: "TU_SENDER_ID",
+            appId: "TU_APP_ID",
+            measurementId: "TU_MEASUREMENT_ID"
+        };
+
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Obtener referencias a los elementos del formulario
+        const authForm = document.getElementById('auth-form');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const signupLink = document.getElementById('signup-link');
+
+        // Manejar el envío del formulario de inicio de sesión
+        authForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = emailInput.value;
+            const password = passwordInput.value;
+            // Iniciar sesión con correo electrónico y contraseña
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Usuario autenticado correctamente
+                    console.log('Usuario autenticado:', userCredential.user);
+                    window.location.href = 'dashboard.html'; // Redirigir al dashboard u otra página
+                })
+                .catch((error) => {
+                    // Manejar errores durante el inicio de sesión
+                    console.error('Error durante el inicio de sesión:', error.message);
+                    alert('Error: ' + error.message); // Mostrar mensaje de error al usuario
+                });
+        });
+
+        // Manejar el enlace de registro
+        signupLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'signup.html'; // Redirigir a la página de registro
+        });
+    </script>
+</body>
+</html>
