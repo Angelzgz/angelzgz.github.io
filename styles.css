@@ -1,0 +1,100 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Color de fondo general */
+}
+
+.container {
+    width: 80%; /* Ancho del contenedor principal */
+    margin: 0 auto; /* Centrado horizontal */
+    text-align: center; /* Centrado del contenido */
+    padding-top: 50px; /* Espacio superior */
+    background-color: #ffffff; /* Color de fondo del contenedor */
+    border-radius: 10px; /* Borde redondeado */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Espaciado interno */
+}
+
+h1 {
+    color: #333333; /* Color del título */
+}
+
+form {
+    max-width: 500px; /* Ancho máximo del formulario */
+    margin: 0 auto; /* Centrado horizontal */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Espacio entre grupos de formulario */
+    text-align: left; /* Alineación del texto a la izquierda */
+}
+
+label {
+    display: block; /* Mostrar etiquetas en bloque */
+    margin-bottom: 5px; /* Espacio inferior de la etiqueta */
+    color: #555555; /* Color del texto de la etiqueta */
+}
+
+input[type="number"], input[type="text"], button {
+    width: 100%; /* Ancho completo para inputs y botones */
+    padding: 10px; /* Relleno interno */
+    font-size: 16px; /* Tamaño de fuente */
+    border: 1px solid #dddddd; /* Borde del input */
+    border-radius: 5px; /* Borde redondeado */
+}
+
+button {
+    background-color: #4CAF50; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cursor de puntero */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+button:hover {
+    background-color: #45a049; /* Color de fondo del botón al pasar el ratón */
+}
+
+#slider-range {
+    width: 80%; /* Ancho del slider */
+    margin: 0 auto; /* Centrado horizontal */
+    margin-top: 20px; /* Espacio superior */
+}
+
+#porcentaje {
+    border: 0;
+    color: #f6931f; /* Color del texto de porcentaje */
+    font-weight: bold; /* Fuente en negrita */
+    text-align: center; /* Centrado del texto */
+    margin-top: 10px; /* Espacio superior */
+}
+
+.resultado {
+    margin-top: 20px; /* Espacio superior del resultado */
+    font-weight: bold; /* Fuente en negrita */
+}
+#btn-volver {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #007bff; /* Color azul similar al de los botones */
+    border: 1px solid #007bff; /* Borde azul */
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    text-decoration: none; /* Quitar subrayado */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+#btn-volver i {
+    margin-right: 5px;
+}
+
+#btn-volver:hover {
+    background-color: #007bff; /* Cambio de color al hacer hover */
+    color: white; /* Texto blanco al hacer hover */
+    border-color: #007bff; /* Borde azul al hacer hover */
+}
