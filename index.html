@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehículos Eléctricos</title>
+    <!-- Incluir Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluir FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Enlace a tu CSS personalizado -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Ajustar al 100% del alto de la ventana */
+            background: linear-gradient(to bottom right, #78b159, #c4df9b); /* Degradado de verde a amarillo */
+            overflow: hidden; /* Ocultar barras de desplazamiento */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Alinear contenido en columna */
+        }
+
+        .image-container {
+            text-align: center; /* Centrar la imagen */
+            margin-bottom: 20px; /* Margen inferior */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 600px; /* Ancho máximo del contenedor de botones */
+            padding: 20px;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.2); /* Fondo semi-transparente */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        }
+
+        .button-container a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: black; /* Color del texto */
+            width: calc(50% - 20px); /* Calcula el ancho de las columnas (50% del contenedor menos el margen) */
+            height: 120px; /* Altura de los botones */
+            margin: 10px; /* Margen entre botones */
+            border-radius: 15px;
+            font-size: 18px; /* Tamaño de fuente */
+            text-align: center; /* Centrar el texto */
+            padding: 10px; /* Añadir padding */
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            background-color: white; /* Color de fondo blanco */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra suave */
+        }
+
+        .button-container a i {
+            font-size: 36px;
+            margin-right: 10px; /* Margen a la derecha del icono */
+        }
+
+        .calculadora i {
+            color: #007bff; /* Color azul para el icono de calculadora */
+        }
+
+        .recarga i {
+            color: #28a745; /* Color verde para el icono de recarga */
+        }
+
+        .precios i {
+            color: #ffc107; /* Color amarillo para el icono de comparativa de precios */
+        }
+
+        .apps i {
+            color: #dc3545; /* Color rojo para el icono de apps útiles */
+        }
+
+        .button-container a:hover {
+            transform: scale(1.1);
+            background-color: rgba(255, 255, 255, 0.8); /* Cambio de color al hacer hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="assets/titulo.png" alt="Vehículos Eléctricos" style="max-width: 100%; height: auto;">
+    </div>
+    <div class="button-container mt-3">
+        <a href="calculadora.html" class="calculadora">
+            <i class="fas fa-calculator"></i>
+            <span>Calculadora eléctrica</span>
+        </a>
+        <a href="mapa.html" class="recarga">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Recarga gratuita</span>
+        </a>
+        <a href="comparativa.html" class="precios">
+            <i class="fas fa-chart-bar"></i>
+            <span>Comparador de tarifas</span>
+        </a>
+        <a href="apps.html" class="apps">
+            <i class="fas fa-mobile-alt"></i>
+            <span>Apps útiles</span>
+        </a>
+    </div>
+</body>
+</html>
+

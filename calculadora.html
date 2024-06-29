@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Eléctrica</title>
+    <!-- Incluir Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluir FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Incluir librería noUiSlider CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #78b159, #c4df9b); /* Degradado de verde a amarillo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Mínimo 100% del alto de la ventana */
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px; /* Ancho máximo del contenido */
+            padding: 20px;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.2); /* Fondo semi-transparente */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Estilos para la barra deslizante */
+        #slider-range {
+            width: 100%; /* Ancho completo de la barra deslizante */
+            margin: 20px auto; /* Centra la barra deslizante horizontalmente */
+        }
+
+        /* Estilos para el texto de porcentaje */
+        #porcentaje {
+            border: 0;
+            color: #f6931f;
+            font-weight: bold;
+            text-align: center; /* Centra el texto dentro del input */
+            margin-top: 10px; /* Espacio superior */
+            width: 100%;
+            max-width: 300px; /* Ancho máximo para el texto de porcentaje */
+            margin: auto; /* Centra el texto horizontalmente */
+            display: block; /* Asegura que ocupe el ancho máximo */
+        }
+
+        /* Estilos para los datos de la calculadora en dos columnas */
+        .datos-calculadora {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            text-align: left;
+            margin-top: 20px;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .datos-calculadora label {
+            display: inline-block;
+            width: 120px; /* Ancho para etiquetas de iconos */
+            font-weight: bold;
+            color: #333;
+        }
+
+        .datos-calculadora span {
+            display: inline-block;
+            width: calc(100% - 120px); /* Calcula el ancho restante para los span */
+            text-align: right;
+        }
+
+        /* Estilos para las manijas del slider */
+        .noUi-handle:before {
+            background-color: #007bff; /* Color del fondo del porcentaje dentro de la manija */
+            color: white; /* Color del texto del porcentaje dentro de la manija */
+            font-weight: bold;
+            font-size: 14px;
+            padding: 4px;
+            border-radius: 4px;
+            content: attr(data-value);
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            transform: translate(-50%, -100%);
+        }
+
+        /* Estilos para el botón de volver al inicio */
+        #btn-volver {
+            position: fixed; /* Posición fija */
+            top: 20px; /* Distancia desde el borde superior */
+            left: 20px; /* Distancia desde el borde izquierdo */
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            z-index: 1000; /* Z-index alto para asegurarse de que esté encima de otros elementos */
+        }
+
+        #btn-volver i {
+            margin-right: 5px; /* Espacio entre el icono y el texto */
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón para volver al inicio -->
+    <a href="index.html" id="btn-volver">
+        <i class="fas fa-arrow-left"></i> Volver al inicio
+    </a>
+
+    <div class="container">
+        <h2>Calculadora Eléctrica</h2>
+        
+        <!-- Formulario de configuración -->
+        <div class="datos-calculadora">
+            <div>
+                <label for="capacidad-bateria"><i class="fas fa-battery-full"></i> Capacidad de la batería:</label>
+                <input type="number" id="capacidad-bateria" value="50" min="1" step="1">
+            </div>
+            <div>
+                <label for="velocidad-carga"><i class="fas fa-bolt"></i> Velocidad de carga:</label>
+                <input type="number" id="velocidad-carga" value="50" min="1" step="1">
+            </div>
+            <div>
+                <label for="precio-carga"><i class="fas fa-euro-sign"></i> Precio de la carga:</label>
+                <input type="number" id="precio-carga" value="0.20" min="0.01" step="0.01">
+            </div>
+            <div>
+                <label for="consumo"><i class="fas fa-plug"></i> Consumo (kWh/100km):</label>
+                <input type="number" id="consumo" value="15" min="1" step="1">
+            </div>
+        </div>
+
+        <!-- Barra deslizante -->
+        <div id="slider-range"></div>
+        <input type="text" id="porcentaje" readonly>
+
+        <!-- Datos de la calculadora en dos columnas -->
+        <div class="datos-calculadora">
+            <div>
+                <label><i class="fas fa-chart-line"></i> Porcentaje seleccionado:</label>
+                <span id="diferencia-porcentaje"></span>
+            </div>
+            <div>
+                <label><i class="fas fa-charging-station"></i> Total kW a cargar:</label>
+                <span id="total-kw-carga"></span>
+            </div>
+            <div>
+                <label><i class="fas fa-road"></i> Autonomía ganada (km):</label>
+                <span id="autonomia-ganada"></span>
+            </div>
+            <div>
+                <label><i class="fas fa-coins"></i> Coste de la recarga (€):</label>
+                <span id="coste-recarga"></span>
+            </div>
+            <div>
+                <label><i class="fas fa-hourglass-half"></i> Tiempo de carga estimado:</label>
+                <span id="tiempo-carga"></span>
+            </div>
+            <div>
+                <label><i class="fas fa-battery-quarter"></i> Autonomía al mínimo del porcentaje:</label>
+                <span id="autonomia-minimo"></span>
+            </div>
+            <div>
+                <label><i class="fas fa-battery-full"></i> Autonomía al máximo del porcentaje:</label>
+                <span id="autonomia-maximo"></span>
+            </div>
+            <div>
+                <label><i class="fas fa-car-battery"></i> Autonomía al 100%:</label>
+                <span id="autonomia-100"></span>
+            </div>
+        </div>
+
+        <!-- Scripts necesarios -->
+        <!-- Incluir jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Incluir librería noUiSlider -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                // Selector para el slider
+                var slider = document.getElementById('slider-range');
+
+                // Configuración del slider
+                noUiSlider.create(slider, {
+                    start: [20, 80], // Valores iniciales del slider
+                    connect: true, // Conectar ambas manijas
+                    range: {
+                        'min': 0,
+                        'max': 100
+                    },
+                    step: 1 // Paso de 1 para números enteros
+                });
+
+                // Función para actualizar los datos de la calculadora
+                function actualizarDatosCalculadora() {
+                    var min = parseInt(slider.noUiSlider.get()[0]); // Convertir a entero
+                    var max = parseInt(slider.noUiSlider.get()[1]); // Convertir a entero
+                    var capacidadBateria = parseFloat(document.getElementById('capacidad-bateria').value);
+                    var velocidadCarga = parseFloat(document.getElementById('velocidad-carga').value);
+                    var precioCarga = parseFloat(document.getElementById('precio-carga').value);
+                    var consumo = parseFloat(document.getElementById('consumo').value);
+
+                    // Calcular total kW a cargar
+                    var totalKwCarga = (capacidadBateria * (max - min) / 100) * (100 / velocidadCarga);
+
+                    // Calcular autonomía ganada con ese porcentaje
+                    var autonomiaGanada = (capacidadBateria * (max - min) / 100) * (100 / consumo);
+
+                    // Calcular coste de la recarga
+                    var costeRecarga = totalKwCarga * precioCarga;
+
+                    // Calcular tiempo de carga estimado
+                    var tiempoCarga = totalKwCarga / velocidadCarga;
+
+                    // Calcular autonomía al mínimo del porcentaje
+                    var autonomiaMinimo = (capacidadBateria * (min / 100)) * (100 / consumo);
+
+                    // Calcular autonomía al máximo del porcentaje
+                    var autonomiaMaximo = (capacidadBateria * (max / 100)) * (100 / consumo);
+
+                    // Calcular autonomía al 100%
+                    var autonomia100 = (capacidadBateria * (100 / 100)) * (100 / consumo);
+
+                    // Mostrar resultados en la interfaz
+                    document.getElementById('porcentaje').value = `Se cargará desde ${min}% hasta ${max}%`;
+                    document.getElementById('diferencia-porcentaje').textContent = `${min}% - ${max}%`;
+                    document.getElementById('total-kw-carga').textContent = totalKwCarga.toFixed(2) + ' kW';
+                    document.getElementById('autonomia-ganada').textContent = autonomiaGanada.toFixed(2) + ' km';
+                    document.getElementById('coste-recarga').textContent = costeRecarga.toFixed(2) + ' €';
+                    document.getElementById('tiempo-carga').textContent = tiempoCarga.toFixed(2) + ' horas';
+                    document.getElementById('autonomia-minimo').textContent = autonomiaMinimo.toFixed(2) + ' km';
+                    document.getElementById('autonomia-maximo').textContent = autonomiaMaximo.toFixed(2) + ' km';
+                    document.getElementById('autonomia-100').textContent = autonomia100.toFixed(2) + ' km';
+
+                    // Guardar los valores seleccionados en localStorage
+                    localStorage.setItem('minPorcentaje', min);
+                    localStorage.setItem('maxPorcentaje', max);
+                    localStorage.setItem('capacidadBateria', capacidadBateria);
+                    localStorage.setItem('velocidadCarga', velocidadCarga);
+                    localStorage.setItem('precioCarga', precioCarga);
+                    localStorage.setItem('consumo', consumo);
+                }
+
+                // Cargar los valores de localStorage si existen
+                var minGuardado = localStorage.getItem('minPorcentaje');
+                var maxGuardado = localStorage.getItem('maxPorcentaje');
+                var capacidadBateriaGuardada = localStorage.getItem('capacidadBateria');
+                var velocidadCargaGuardada = localStorage.getItem('velocidadCarga');
+                var precioCargaGuardado = localStorage.getItem('precioCarga');
+                var consumoGuardado = localStorage.getItem('consumo');
+
+                if (minGuardado && maxGuardado) {
+                    slider.noUiSlider.set([minGuardado, maxGuardado]);
+                    document.getElementById('capacidad-bateria').value = capacidadBateriaGuardada;
+                    document.getElementById('velocidad-carga').value = velocidadCargaGuardada;
+                    document.getElementById('precio-carga').value = precioCargaGuardado;
+                    document.getElementById('consumo').value = consumoGuardado;
+                }
+
+                // Actualizar los datos cuando se mueva el slider
+                slider.noUiSlider.on('slide', function() {
+                    actualizarDatosCalculadora();
+                });
+
+                // Llamar a la función inicialmente para mostrar los datos calculados con los valores iniciales del slider
+                actualizarDatosCalculadora();
+
+                // Eventos para actualizar los datos cuando se modifiquen los campos de entrada
+                $('#capacidad-bateria, #velocidad-carga, #precio-carga, #consumo').on('change', function() {
+                    actualizarDatosCalculadora();
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>
+
+

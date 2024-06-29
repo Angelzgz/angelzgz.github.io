@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparativa de Operadores de Recarga Eléctrica</title>
+    <!-- Incluir Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluir FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #78b159, #c4df9b); /* Fondo de degradado verde similar a index.html */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff; /* Color de fondo para las cabeceras similar al de index.html */
+            color: #fff; /* Color de texto para las cabeceras */
+        }
+
+        td {
+            background-color: #ffffff; /* Color de fondo para las celdas */
+        }
+
+        .icono-operador {
+            font-size: 18px;
+            margin-right: 5px;
+        }
+
+        /* Estilos para el botón de volver al inicio */
+        #btn-volver {
+            position: fixed; /* Posición fija */
+            top: 20px; /* Distancia desde el borde superior */
+            left: 20px; /* Distancia desde el borde izquierdo */
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            z-index: 1000; /* Z-index alto para asegurarse de que esté encima de otros elementos */
+        }
+
+        #btn-volver i {
+            margin-right: 5px; /* Espacio entre el icono y el texto */
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón para volver al inicio -->
+    <a href="index.html" id="btn-volver">
+        <i class="fas fa-arrow-left"></i> Volver al inicio
+    </a>
+
+    <div class="container">
+        <h2 class="text-center">Comparativa de Operadores de Recarga Eléctrica en España</h2>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Operador</th>
+                    <th>Potencia (kW)</th>
+                    <th>Coste por kWh (€)</th>
+                    <th>Alta</th>
+                    <th>Aplicación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Acciona</td>
+                    <td>50</td>
+                    <td>0.60</td>
+                    <td>No</td>
+                    <td><i class="fab fa-android icono-operador"></i><i class="fab fa-apple icono-operador"></i></td>
+                </tr>
+                <tr>
+                    <td>Tesla</td>
+                    <td>350</td>
+                    <td>0.65</td>
+                    <td>No</td>
+                    <td><i class="fab fa-android icono-operador"></i><i class="fab fa-apple icono-operador"></i></td>
+                </tr>
+                <tr>
+                    <td>Zunder</td>
+                    <td>50</td>
+                    <td>0.42</td>
+                    <td>Suscripción opcional 9.99 €/mes con mejores tarifas</td>
+                    <td><i class="fab fa-android icono-operador"></i><i class="fab fa-apple icono-operador"></i></td>
+                </tr>
+                <tr>
+                    <td>Endesa X</td>
+                    <td>50</td>
+                    <td>0.47</td>
+                    <td>No</td>
+                    <td><i class="fab fa-android icono-operador"></i><i class="fab fa-apple icono-operador"></i></td>
+                </tr>
+                <tr>
+                    <td>Repsol</td>
+                    <td>50</td>
+                    <td>0.45</td>
+                    <td>15 €</td>
+                    <td><i class="fab fa-android icono-operador"></i><i class="fab fa-apple icono-operador"></i></td>
+                </tr>
+                <tr>
+                    <td>Wenea</td>
+                    <td>150</td>
+                    <td>0.41 - 0.45</td>
+                    <td>No</td>
+                    <td><i class="fab fa-android icono-operador"></i><i class="fab fa-apple icono-operador"></i></td>
+                </tr>
+                <tr>
+                    <td>Iberdrola</td>
+                    <td>50</td>
+                    <td>0.45</td>
+                    <td>No</td>
+                    <td><i class="fab fa-android icono-operador"></i><i class="fab fa-apple icono-operador"></i></td>
+                </tr>
+                <tr>
+                    <td>EDP</td>
+                    <td>50</td>
+                    <td>0.42</td>
+                    <td>No</td>
+                    <td><i class="fab fa-android icono-operador"></i><i class="fab fa-apple icono-operador"></i></td>
+                </tr>
+                <tr>
+                    <td>Ionity</td>
+                    <td>150</td>
+                    <td>0.41 - 0.58</td>
+                    <td>No (Clientes no-Tesla sin abono: 0.52 - 0.58)</td>
+                    <td><i class="fab fa-android icono-operador"></i><i class="fab fa-apple icono-operador"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Incluir FontAwesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</body>
+</html>
+
+
+
